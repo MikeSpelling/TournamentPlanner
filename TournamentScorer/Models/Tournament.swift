@@ -10,30 +10,38 @@ import Foundation
 
 class Tournament {
     
-    public var players: [Player]
+    public var title: String = ""
+    
+    public var players: [Player] = []
     
     public var teams: [Team] = []
     
     var gamesPlayed: [Game] = []
     
     
-    init() {
+    init(withTitle title: String) {
+        self.title = title
+        
         players = [Player(withName: "A"),
                    Player(withName: "B"),
                    Player(withName: "C"),
                    Player(withName: "D"),
-                   Player(withName: "E")]
+                   Player(withName: "E"),
+                   Player(withName: "F")]
         
         teams = allPossibleTeams()
         
-        let score1 = Score(withTeam: teams.first!, points: 2)
-        let score2 = Score(withTeam: teams.last!, points: 4)
-        let testGame = Game(withScores: [score1, score2])
-        gamesPlayed = [testGame]
+        let testGame1 = Game(withScores: [Score(withTeam: teams.first!, points: 2),
+                                          Score(withTeam: teams.last!, points: 4)])
         
-        print("possible games(\(allPossibleGames().count)): \(allPossibleGames())")
+        let testGame2 = Game(withScores: [Score(withTeam: teams[2], points: 9),
+                                          Score(withTeam: teams[4], points: 11)])
+        gamesPlayed = [testGame1, testGame2]
+        
         print("teams: \(teams)")
-        print(points(forPlayer: players.first!))
+        for game in allPossibleGames() {
+            print(game)
+        }
     }
     
     func points(forPlayer player:Player) -> UInt {

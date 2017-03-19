@@ -1,5 +1,5 @@
 //
-//  SummaryViewController.swift
+//  TournamentsViewController.swift
 //  TournamentScorer
 //
 //  Created by Jade Chloe on 18/03/2017.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class SummaryViewController: UIViewController {
+class TournamentsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView?
     
     
-    fileprivate let tournament = Tournament()
+    fileprivate let tournaments: [Tournament] = [Tournament(withTitle: "Test Tournament 1")]
     
-    fileprivate let cellName = String(describing: PlayerSummaryCell.self)
+    fileprivate let cellName = String(describing: TournamentCell.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,21 +25,21 @@ class SummaryViewController: UIViewController {
     
 }
 
-extension SummaryViewController: UITableViewDataSource {
+extension TournamentsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tournament.players.count
+        return tournaments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellName) as! PlayerSummaryCell
-        cell.update(withPlayer: tournament.players[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellName) as! TournamentCell
+        cell.update(withTournament: tournaments[indexPath.row])
         return cell
     }
     
 }
 
-extension SummaryViewController: UITableViewDelegate {
+extension TournamentsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

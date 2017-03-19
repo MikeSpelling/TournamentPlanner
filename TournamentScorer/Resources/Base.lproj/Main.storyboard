@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-1458" y="149"/>
         </scene>
-        <!--Summary-->
+        <!--Tournaments-->
         <scene sceneID="dV6-nv-bgG">
             <objects>
-                <viewController title="Summary" id="euU-La-w8B" customClass="SummaryViewController" customModule="DoublesScorer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="euU-La-w8B" customClass="TournamentsViewController" customModule="TournamentScorer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CW3-zQ-gSd"/>
                         <viewControllerLayoutGuide type="bottom" id="VgQ-Lc-0Ca"/>
@@ -56,7 +56,7 @@
                             <constraint firstAttribute="trailing" secondItem="KSK-Jl-ylF" secondAttribute="trailing" id="VAw-ha-RVi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Summary" id="oSG-Vv-VnA"/>
+                    <navigationItem key="navigationItem" title="Tournaments" id="oSG-Vv-VnA"/>
                     <connections>
                         <outlet property="tableView" destination="KSK-Jl-ylF" id="WLL-WT-lEm"/>
                     </connections>

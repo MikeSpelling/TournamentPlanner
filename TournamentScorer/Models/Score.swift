@@ -1,6 +1,6 @@
 //
 //  Score.swift
-//  DoublesScorer
+//  TournamentScorer
 //
 //  Created by Jade Chloe on 19/03/2017.
 //  Copyright © 2017 Mike. All rights reserved.

@@ -12,6 +12,8 @@ class Tournament {
     
     public var title: String = ""
     
+    public var scorer: TournamentScorer = TournamentScorer(winValueUsesPointDifference: true)
+    
     public var players: [Player] = []
     
     public var teams: [Team] = []
@@ -31,11 +33,11 @@ class Tournament {
         
         teams = allPossibleTeams()
         
-        let testGame1 = Game(withScores: [Score(withTeam: teams.first!, points: 2),
-                                          Score(withTeam: teams.last!, points: 4)])
+        let testGame1 = Game(withScores: [Score(withTeam: teams.first!, value: 2),
+                                          Score(withTeam: teams.last!, value: 4)])
         
-        let testGame2 = Game(withScores: [Score(withTeam: teams[2], points: 9),
-                                          Score(withTeam: teams[4], points: 11)])
+        let testGame2 = Game(withScores: [Score(withTeam: teams[2], value: 15),
+                                          Score(withTeam: teams[4], value: 11)])
         gamesPlayed = [testGame1, testGame2]
         
         print("teams: \(teams)")
@@ -44,18 +46,10 @@ class Tournament {
         }
     }
     
-    func points(forPlayer player:Player) -> UInt {
-        var points: UInt = 0
-        for game in games(forPlayer: player) {
-            points += game.points(forPlayer: player)
-        }
-        return points
-    }
-    
     func games(forPlayer player:Player) -> [Game] {
         var gamesForPlayer: [Game] = []
         for game in gamesPlayed {
-            if game.includes(player: player) {
+            if game.players().contains(player) {
                 gamesForPlayer.append(game)
             }
         }
@@ -65,7 +59,7 @@ class Tournament {
     func remainingGames(forPlayer player:Player) -> [Game] {
         var remainingGames: [Game] = []
         for game in allPossibleGames() {
-            if !game.includes(player: player) {
+            if !game.players().contains(player) {
                 remainingGames.append(game)
             }
         }
@@ -89,7 +83,7 @@ class Tournament {
         for (index, team) in teams.enumerated() {
             if index < teams.count-1 {
                 for otherIndex in index+1...teams.count-1 {
-                    if teams[otherIndex].canPlay(team: team) {
+                    if teams[otherIndex].canPlay(againstTeam: team) {
                         possibleGames.append(Game(withTeams: [team, teams[otherIndex]]))
                     }
                 }

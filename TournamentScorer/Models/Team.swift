@@ -16,7 +16,7 @@ class Team: Equatable, CustomStringConvertible {
         self.players = players
     }
     
-    func canPlay(team: Team) -> Bool {
+    func canPlay(againstTeam team: Team) -> Bool {
         for player in players {
             if team.players.contains(player) {
                 return false
@@ -25,23 +25,23 @@ class Team: Equatable, CustomStringConvertible {
         return true
     }
     
-    // Mark: - Equatable
+    // MARK: - Equatable
     
     public static func ==(lhs: Team, rhs: Team) -> Bool {
         return lhs.players == rhs.players
     }
     
-    // Mark: - CustomStringConvertible
+    // MARK: - CustomStringConvertible
     
     public var description:String {
-        var string = "("
+        var string = ""
         for player in players {
             string += player.name
             if players.index(of: player)! < players.count-1 {
-                string += ","
+                string += "&"
             }
         }
-        return string + ")"
+        return string
     }
     
 }

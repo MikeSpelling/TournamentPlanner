@@ -16,13 +16,13 @@ class Player: Equatable, CustomStringConvertible {
         self.name = name
     }
     
-    // Mark: - Equatable
+    // MARK: - Equatable
     
     public static func ==(lhs: Player, rhs: Player) -> Bool {
         return lhs.name == rhs.name
     }
     
-    // Mark: - CustomStringConvertible
+    // MARK: - CustomStringConvertible
     
     public var description:String {
         return name

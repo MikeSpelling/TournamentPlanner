@@ -10,29 +10,29 @@ import Foundation
 
 class Score: Equatable, CustomStringConvertible {
     let team: Team
-    let points: UInt
+    let value: Int
     
-    init(withTeam team: Team, points: UInt) {
+    init(withTeam team: Team, value: Int) {
         self.team = team
-        self.points = points
+        self.value = value
     }
     
-    func points(forPlayer player: Player) -> UInt {
+    func value(forPlayer player: Player) -> Int {
         if team.players.contains(player) {
-            return points
+            return value
         }
         return 0
     }
     
-    // Mark: - Equatable
+    // MARK: - Equatable
     
     public static func ==(lhs: Score, rhs: Score) -> Bool {
-        return lhs.team == rhs.team && lhs.points == rhs.points
+        return lhs.team == rhs.team && lhs.value == rhs.value
     }
     
-    // Mark: - CustomStringConvertible
+    // MARK: - CustomStringConvertible
     
     public var description:String {
-        return "\(team): \(points)"
+        return "\(team):\(value)"
     }
 }

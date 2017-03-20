@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AAF54A51E7FD42500BD4105 /* TournamentScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAF54A41E7FD42500BD4105 /* TournamentScorer.swift */; };
 		9F9853541E7D4AE40089AAE6 /* TournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9853531E7D4AE40089AAE6 /* TournamentsViewController.swift */; };
 		9F9853581E7D4B120089AAE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9853561E7D4B120089AAE6 /* Assets.xcassets */; };
 		9F9853601E7D4B470089AAE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98535A1E7D4B470089AAE6 /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2AAF54A41E7FD42500BD4105 /* TournamentScorer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentScorer.swift; sourceTree = "<group>"; };
 		9F98532D1E7D3EC00089AAE6 /* TournamentScorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournamentScorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9853531E7D4AE40089AAE6 /* TournamentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsViewController.swift; sourceTree = "<group>"; };
 		9F9853561E7D4B120089AAE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,11 +86,12 @@
 		9F9853501E7D4AE40089AAE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9F9853631E7DF08C0089AAE6 /* Player.swift */,
 				9F98536A1E7DF7AD0089AAE6 /* Game.swift */,
-				9F98536C1E7E08050089AAE6 /* Tournament.swift */,
-				9F98536E1E7E08D10089AAE6 /* Team.swift */,
+				9F9853631E7DF08C0089AAE6 /* Player.swift */,
 				9F9853701E7E60870089AAE6 /* Score.swift */,
+				9F98536E1E7E08D10089AAE6 /* Team.swift */,
+				9F98536C1E7E08050089AAE6 /* Tournament.swift */,
+				2AAF54A41E7FD42500BD4105 /* TournamentScorer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				9F9853601E7D4B470089AAE6 /* AppDelegate.swift in Sources */,
 				9F9853711E7E60870089AAE6 /* Score.swift in Sources */,
 				9F98536F1E7E08D10089AAE6 /* Team.swift in Sources */,
+				2AAF54A51E7FD42500BD4105 /* TournamentScorer.swift in Sources */,
 				9FC9E66F1E7ED9BC00AA1CDC /* TournamentCell.swift in Sources */,
 				9F98536B1E7DF7AD0089AAE6 /* Game.swift in Sources */,
 				9F9853671E7DF1EA0089AAE6 /* PlayerSummaryCell.swift in Sources */,

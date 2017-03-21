@@ -33,7 +33,7 @@ extension TournamentsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TournamentCell.identifier) as! TournamentCell
+        let cell = tableView.dequeueCell(ofType: TournamentCell.self) as! TournamentCell
         cell.update(withTournament: tournaments[indexPath.row])
         return cell
     }

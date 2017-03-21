@@ -26,7 +26,7 @@ extension EditTournamentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PlayerSummaryCell.identifier) as! TournamentCell
+        let cell = tableView.dequeueCell(ofType: PlayerSummaryCell.self) as! TournamentCell
         return cell
     }
     

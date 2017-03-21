@@ -8,6 +8,12 @@
 
 import UIKit
 
-class LeaderboardViewController: UIViewController {
+class LeaderboardViewController: BaseViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print(tournament)
+    }
     
 }

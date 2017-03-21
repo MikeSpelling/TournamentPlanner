@@ -25,6 +25,7 @@
 		9FC9E6731E80A04500AA1CDC /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9E6721E80A04500AA1CDC /* MasterViewController.swift */; };
 		9FC9E6751E80A25100AA1CDC /* TournamentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FC9E6741E80A25100AA1CDC /* TournamentsViewController.xib */; };
 		9FC9E6771E80A57200AA1CDC /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9E6761E80A57200AA1CDC /* LeaderboardViewController.swift */; };
+		9FC9E6791E8106A400AA1CDC /* BaseVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9E6781E8106A400AA1CDC /* BaseVIewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		9FC9E6721E80A04500AA1CDC /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		9FC9E6741E80A25100AA1CDC /* TournamentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TournamentsViewController.xib; sourceTree = "<group>"; };
 		9FC9E6761E80A57200AA1CDC /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		9FC9E6781E8106A400AA1CDC /* BaseVIewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVIewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				9F9853531E7D4AE40089AAE6 /* TournamentsViewController.swift */,
 				9FC9E6741E80A25100AA1CDC /* TournamentsViewController.xib */,
 				9FC9E6761E80A57200AA1CDC /* LeaderboardViewController.swift */,
+				9FC9E6781E8106A400AA1CDC /* BaseVIewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				9FC9E66F1E7ED9BC00AA1CDC /* TournamentCell.swift in Sources */,
 				9F98536B1E7DF7AD0089AAE6 /* Game.swift in Sources */,
 				9F9853671E7DF1EA0089AAE6 /* PlayerSummaryCell.swift in Sources */,
+				9FC9E6791E8106A400AA1CDC /* BaseVIewController.swift in Sources */,
 				9FC9E6771E80A57200AA1CDC /* LeaderboardViewController.swift in Sources */,
 				9F9853641E7DF08C0089AAE6 /* Player.swift in Sources */,
 				9F9853541E7D4AE40089AAE6 /* TournamentsViewController.swift in Sources */,

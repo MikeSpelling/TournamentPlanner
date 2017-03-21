@@ -10,44 +10,16 @@ import UIKit
 
 class MasterViewController: UITabBarController {
     
-    var tournament: Tournament?
-    var hasSetupView: Bool = false
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if (!hasSetupView) {
-            setupTabs()
-            showTournamentsView()
-            hasSetupView = true
+    func set(tournament: Tournament) {
+        for viewController in viewControllers! {
+            if let tabNavigationController = viewController as? UINavigationController {
+                if let rootViewController = tabNavigationController.viewControllers.first as? BaseViewController {
+                    rootViewController.tournament = tournament
+                }
+            }
         }
     }
     
-    func showTournamentsView() {
-        tabsNavigationController().present(TournamentsViewController(withDelegate: self), animated: false, completion: nil)
-    }
-    
-    // MARK: - Private
-    
-    fileprivate func setupTabs() {
-        for tabNavigationController in viewControllers as! [UINavigationController] {
-            tabNavigationController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showTournamentsView))
-        }
-    }
-    
-    fileprivate func tabsNavigationController() -> UINavigationController {
-        return viewControllers?[selectedIndex] as! UINavigationController
-    }
-
-}
-
-extension MasterViewController: TournamentsViewControllerDelegate {
-    
-    internal func selected(tournament: Tournament) {
-        self.tournament = tournament
-        tabsNavigationController().dismiss(animated: true, completion: nil)
-    }
-
 }
 
 

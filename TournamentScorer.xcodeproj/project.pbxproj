@@ -134,12 +134,12 @@
 		9F9853551E7D4B120089AAE6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9F98535A1E7D4B470089AAE6 /* AppDelegate.swift */,
 				9F9853561E7D4B120089AAE6 /* Assets.xcassets */,
 				9F9853571E7D4B120089AAE6 /* Info.plist */,
-				9F98535A1E7D4B470089AAE6 /* AppDelegate.swift */,
 				9F98535C1E7D4B470089AAE6 /* LaunchScreen.storyboard */,
-				9F98535E1E7D4B470089AAE6 /* Tournament.storyboard */,
 				2AAF54AC1E811F0500BD4105 /* Main.storyboard */,
+				9F98535E1E7D4B470089AAE6 /* Tournament.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

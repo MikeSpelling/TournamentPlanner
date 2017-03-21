@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol TournamentsViewControllerDelegate: class {
-    func selected(tournament: Tournament)
-}
-
 class TournamentsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView?    

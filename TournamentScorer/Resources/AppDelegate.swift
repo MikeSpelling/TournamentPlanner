@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        showTournamentsView()
+        window?.rootViewController = TournamentsViewController()
         window?.makeKeyAndVisible()
         return true
     }
@@ -40,25 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-}
-
-extension AppDelegate: TournamentsViewControllerDelegate {
-    
-    func showTournamentsView() {
-        window?.rootViewController = TournamentsViewController(withDelegate: self)
-    }
-    
-    func showMasterView(withTournament tournament: Tournament) {
-        if let masterViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MasterViewController {
-            masterViewController.set(tournament: tournament)
-            window?.rootViewController = masterViewController
-        }
-    }
-    
-    func selected(tournament: Tournament) {
-        showMasterView(withTournament: tournament)
     }
 
 }

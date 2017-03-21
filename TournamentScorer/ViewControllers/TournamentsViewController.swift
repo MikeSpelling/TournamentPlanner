@@ -16,22 +16,10 @@ class TournamentsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView?
     
-    weak var delgate: TournamentsViewControllerDelegate?
     
-    
-    fileprivate let tournaments: [Tournament] = [Tournament(withTitle: "Test Tournament 1")]
+    fileprivate let tournaments: [Tournament] = UserDefaults.getTournaments()
     
     fileprivate let cellName = String(describing: TournamentCell.self)
-    
-    init(withDelegate delegate: TournamentsViewControllerDelegate) {
-        super.init(nibName: nil, bundle: nil)
-        
-        self.delgate = delegate
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +48,9 @@ extension TournamentsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if delgate != nil {
-            delgate?.selected(tournament: tournaments[indexPath.row])
+        if let masterViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MasterViewController {
+            masterViewController.tournament = tournaments[indexPath.row]
+            self.present(masterViewController, animated: true, completion: nil)
         }
     }
     

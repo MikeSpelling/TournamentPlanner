@@ -13,7 +13,8 @@ class LeaderboardViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(tournament)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(showTournamentsView))
+        navigationItem.title = tournament.title
     }
     
 }

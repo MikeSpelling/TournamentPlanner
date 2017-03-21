@@ -10,15 +10,7 @@ import UIKit
 
 class MasterViewController: UITabBarController {
     
-    func set(tournament: Tournament) {
-        for viewController in viewControllers! {
-            if let tabNavigationController = viewController as? UINavigationController {
-                if let rootViewController = tabNavigationController.viewControllers.first as? BaseViewController {
-                    rootViewController.tournament = tournament
-                }
-            }
-        }
-    }
+    var tournament: Tournament?
     
 }
 

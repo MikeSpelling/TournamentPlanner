@@ -22,12 +22,11 @@ class Tournament {
     init(withTitle title: String) {
         self.title = title
         
-        players = [Player(withName: "A"),
-                   Player(withName: "B"),
-                   Player(withName: "C"),
-                   Player(withName: "D"),
-                   Player(withName: "E"),
-                   Player(withName: "F")]
+        players = [Player(withName: "Mike"),
+                   Player(withName: "Sam"),
+                   Player(withName: "Haroon"),
+                   Player(withName: "James"),
+                   Player(withName: "Antony")]
         
         teams = allPossibleTeams()
         
@@ -39,6 +38,7 @@ class Tournament {
         gamesPlayed = [testGame1, testGame2]
         
         print("teams: \(teams)")
+        print("\(allPossibleGames().count) games:")
         for game in allPossibleGames() {
             print(game)
         }

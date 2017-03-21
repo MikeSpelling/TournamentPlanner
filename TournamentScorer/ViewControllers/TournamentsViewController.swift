@@ -10,16 +10,18 @@ import UIKit
 
 class TournamentsViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView?    
+    @IBOutlet weak var tableView: UITableView?
+    var addFooter: AddFooterView?
     
-    fileprivate let tournaments: [Tournament] = UserDefaults.getTournaments()
-    
-    fileprivate let cellName = String(describing: TournamentCell.self)
+    fileprivate let tournaments: [Tournament] = UserDefaults.tournaments
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView!.register(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
+        addFooter = AddFooterView.viewFromNib() as? AddFooterView
+        addFooter?.delegate = self
+        
+        tableView?.registerCell(ofType: TournamentCell.self)
     }
     
 }
@@ -31,7 +33,7 @@ extension TournamentsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellName) as! TournamentCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TournamentCell.identifier) as! TournamentCell
         cell.update(withTournament: tournaments[indexPath.row])
         return cell
     }
@@ -46,19 +48,23 @@ extension TournamentsViewController: UITableViewDelegate {
         self.navigationController?.presentMasterViewController(withTournament: tournaments[indexPath.row])
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
-    }
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if let footer = self.tableView(tableView, viewForFooterInSection: section) {
+            footer.layoutIfNeeded()
+            return footer.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        }
         return 0
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
+        return addFooter
     }
+}
+
+extension TournamentsViewController: AddFooterViewDelegate {
+    
+    func footerTapped(footer: AddFooterView) {
+        self.navigationController?.pushViewController(EditTournamentViewController(), animated: true)
+    }
+    
 }

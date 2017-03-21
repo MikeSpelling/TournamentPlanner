@@ -11,7 +11,7 @@ import UIKit
 extension UINavigationController {
     
     func presentMasterViewController(withTournament tournament: Tournament) {
-        if let masterViewController = UIStoryboard.tournament().instantiateInitialViewController() as? MasterViewController {
+        if let masterViewController = UIStoryboard.tournament.instantiateInitialViewController() as? MasterViewController {
             masterViewController.tournament = tournament
             self.present(masterViewController, animated: true, completion: nil)
         }

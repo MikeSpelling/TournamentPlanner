@@ -24,7 +24,7 @@ class BaseTournamentViewController: UIViewController {
     }
     
     @objc private func showTournamentsView() {
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 
 }

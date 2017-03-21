@@ -10,7 +10,7 @@ import Foundation
 
 extension UserDefaults {
     
-    static func getTournaments() -> [Tournament] {
+    static var tournaments: [Tournament] {
         if let savedTournamentsData = UserDefaults.standard.object(forKey: "tournaments") as? Data {
             if let savedTournaments = NSKeyedUnarchiver.unarchiveObject(with: savedTournamentsData) as? [Tournament] {
                 return savedTournaments

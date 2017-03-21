@@ -10,11 +10,11 @@ import UIKit
 
 extension UIStoryboard {
     
-    static func tournament() -> UIStoryboard {
+    static var tournament: UIStoryboard {
         return UIStoryboard(name: "Tournament", bundle: nil)
     }
     
-    static func main() -> UIStoryboard {
+    static var main: UIStoryboard {
         return UIStoryboard(name: "Main", bundle: nil)
     }
 }

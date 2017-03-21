@@ -12,6 +12,13 @@
 		2AAF54AE1E811F0500BD4105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AAF54AC1E811F0500BD4105 /* Main.storyboard */; };
 		2AAF54B01E811FCF00BD4105 /* StoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAF54AF1E811FCF00BD4105 /* StoryboardExtension.swift */; };
 		2AAF54B21E81215300BD4105 /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAF54B11E81215300BD4105 /* NavigationControllerExtension.swift */; };
+		2AAF54B41E8156E500BD4105 /* AddFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAF54B31E8156E500BD4105 /* AddFooterView.swift */; };
+		2AAF54B61E8156F800BD4105 /* AddFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AAF54B51E8156F800BD4105 /* AddFooterView.xib */; };
+		2AAF54B91E81660E00BD4105 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAF54B81E81660E00BD4105 /* ViewExtension.swift */; };
+		2AAF54BB1E816BFC00BD4105 /* EditTournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAF54BA1E816BFC00BD4105 /* EditTournamentViewController.swift */; };
+		2AAF54BD1E816C6C00BD4105 /* EditTournamentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AAF54BC1E816C6C00BD4105 /* EditTournamentViewController.xib */; };
+		2AAF54BF1E816D3D00BD4105 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAF54BE1E816D3D00BD4105 /* UITableViewExtension.swift */; };
+		2AAF54C11E816DA400BD4105 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAF54C01E816DA400BD4105 /* UITableViewCellExtension.swift */; };
 		9F9853541E7D4AE40089AAE6 /* TournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9853531E7D4AE40089AAE6 /* TournamentsViewController.swift */; };
 		9F9853581E7D4B120089AAE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9853561E7D4B120089AAE6 /* Assets.xcassets */; };
 		9F9853601E7D4B470089AAE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F98535A1E7D4B470089AAE6 /* AppDelegate.swift */; };
@@ -37,6 +44,13 @@
 		2AAF54AD1E811F0500BD4105 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2AAF54AF1E811FCF00BD4105 /* StoryboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardExtension.swift; sourceTree = "<group>"; };
 		2AAF54B11E81215300BD4105 /* NavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtension.swift; sourceTree = "<group>"; };
+		2AAF54B31E8156E500BD4105 /* AddFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFooterView.swift; sourceTree = "<group>"; };
+		2AAF54B51E8156F800BD4105 /* AddFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFooterView.xib; sourceTree = "<group>"; };
+		2AAF54B81E81660E00BD4105 /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		2AAF54BA1E816BFC00BD4105 /* EditTournamentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTournamentViewController.swift; sourceTree = "<group>"; };
+		2AAF54BC1E816C6C00BD4105 /* EditTournamentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTournamentViewController.xib; sourceTree = "<group>"; };
+		2AAF54BE1E816D3D00BD4105 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		2AAF54C01E816DA400BD4105 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		9F98532D1E7D3EC00089AAE6 /* TournamentScorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournamentScorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9853531E7D4AE40089AAE6 /* TournamentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsViewController.swift; sourceTree = "<group>"; };
 		9F9853561E7D4B120089AAE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +89,9 @@
 				2AAF54B11E81215300BD4105 /* NavigationControllerExtension.swift */,
 				2AAF54AF1E811FCF00BD4105 /* StoryboardExtension.swift */,
 				2AAF54AA1E811BCD00BD4105 /* UserDefaultsExtension.swift */,
+				2AAF54B81E81660E00BD4105 /* ViewExtension.swift */,
+				2AAF54BE1E816D3D00BD4105 /* UITableViewExtension.swift */,
+				2AAF54C01E816DA400BD4105 /* UITableViewCellExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -124,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				9FC9E6781E8106A400AA1CDC /* BaseTournamentViewController.swift */,
+				2AAF54BA1E816BFC00BD4105 /* EditTournamentViewController.swift */,
+				2AAF54BC1E816C6C00BD4105 /* EditTournamentViewController.xib */,
 				9FC9E6761E80A57200AA1CDC /* LeaderboardViewController.swift */,
 				9FC9E6721E80A04500AA1CDC /* MasterViewController.swift */,
 				9F9853531E7D4AE40089AAE6 /* TournamentsViewController.swift */,
@@ -147,6 +166,8 @@
 		9F9853651E7DF1DB0089AAE6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2AAF54B31E8156E500BD4105 /* AddFooterView.swift */,
+				2AAF54B51E8156F800BD4105 /* AddFooterView.xib */,
 				9F9853661E7DF1EA0089AAE6 /* PlayerSummaryCell.swift */,
 				9F9853681E7DF2D00089AAE6 /* PlayerSummaryCell.xib */,
 				9FC9E66E1E7ED9BC00AA1CDC /* TournamentCell.swift */,
@@ -219,7 +240,9 @@
 				9F9853611E7D4B470089AAE6 /* LaunchScreen.storyboard in Resources */,
 				9F9853581E7D4B120089AAE6 /* Assets.xcassets in Resources */,
 				9F9853621E7D4B470089AAE6 /* Tournament.storyboard in Resources */,
+				2AAF54B61E8156F800BD4105 /* AddFooterView.xib in Resources */,
 				9F9853691E7DF2D00089AAE6 /* PlayerSummaryCell.xib in Resources */,
+				2AAF54BD1E816C6C00BD4105 /* EditTournamentViewController.xib in Resources */,
 				9FC9E6711E7ED9C700AA1CDC /* TournamentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AAF54B91E81660E00BD4105 /* ViewExtension.swift in Sources */,
 				9FC9E6731E80A04500AA1CDC /* MasterViewController.swift in Sources */,
 				9F98536D1E7E08050089AAE6 /* Tournament.swift in Sources */,
 				9F9853601E7D4B470089AAE6 /* AppDelegate.swift in Sources */,
@@ -240,13 +264,17 @@
 				9FC9E66F1E7ED9BC00AA1CDC /* TournamentCell.swift in Sources */,
 				2AAF54B21E81215300BD4105 /* NavigationControllerExtension.swift in Sources */,
 				9F98536B1E7DF7AD0089AAE6 /* Game.swift in Sources */,
+				2AAF54B41E8156E500BD4105 /* AddFooterView.swift in Sources */,
+				2AAF54BF1E816D3D00BD4105 /* UITableViewExtension.swift in Sources */,
 				9F9853671E7DF1EA0089AAE6 /* PlayerSummaryCell.swift in Sources */,
 				9FC9E6791E8106A400AA1CDC /* BaseTournamentViewController.swift in Sources */,
 				9FC9E6771E80A57200AA1CDC /* LeaderboardViewController.swift in Sources */,
 				9F9853641E7DF08C0089AAE6 /* Player.swift in Sources */,
 				2AAF54AB1E811BCD00BD4105 /* UserDefaultsExtension.swift in Sources */,
 				2AAF54B01E811FCF00BD4105 /* StoryboardExtension.swift in Sources */,
+				2AAF54C11E816DA400BD4105 /* UITableViewCellExtension.swift in Sources */,
 				9F9853541E7D4AE40089AAE6 /* TournamentsViewController.swift in Sources */,
+				2AAF54BB1E816BFC00BD4105 /* EditTournamentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

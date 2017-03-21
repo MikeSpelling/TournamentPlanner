@@ -6,15 +6,13 @@
 //  Copyright © 2017 Mike. All rights reserved.
 //
 
-import UIKit
-
-class LeaderboardViewController: BaseViewController {
+class LeaderboardViewController: BaseTournamentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(showTournamentsView))
-        navigationItem.title = tournament.title
+        setNavigationBarTitleForTournament()
+        setNavigationBarTournamentsButton()
     }
     
 }

@@ -14,8 +14,7 @@ protocol TournamentsViewControllerDelegate: class {
 
 class TournamentsViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView?
-    
+    @IBOutlet weak var tableView: UITableView?    
     
     fileprivate let tournaments: [Tournament] = UserDefaults.getTournaments()
     
@@ -48,10 +47,7 @@ extension TournamentsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let masterViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? MasterViewController {
-            masterViewController.tournament = tournaments[indexPath.row]
-            self.present(masterViewController, animated: true, completion: nil)
-        }
+        self.navigationController?.presentMasterViewController(withTournament: tournaments[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

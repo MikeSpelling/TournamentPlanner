@@ -10,7 +10,7 @@ import Foundation
 
 class Game: NSObject, NSCoding {
     
-    let scores: [Score]
+    var scores: [Score]
     private let scoresCodingKey = "GameScores"
     
     // MARK: - Initialization

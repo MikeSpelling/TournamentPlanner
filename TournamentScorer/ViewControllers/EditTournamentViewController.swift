@@ -44,7 +44,7 @@ class EditTournamentViewController: UIViewController {
     }
     
     func rand(max: Int = 1) -> Int {
-        return Int(arc4random_uniform(UInt32(max)) + 1)
+        return Int(arc4random_uniform(UInt32(max+1)))
     }
 }
 

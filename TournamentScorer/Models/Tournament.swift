@@ -38,7 +38,23 @@ class Tournament: NSObject, NSCoding {
         self.title = title
     }
     
-    func games(forPlayer player:Player) -> [Game] {
+    func points(forPlayer player: Player) -> Int {
+        var points = 0
+        for game in gamesPlayed(forPlayer: player) {
+            points += scorer.points(forPlayer: player, inGame: game)
+        }
+        return points
+    }
+    
+    func points(forTeam team: Team) -> Int {
+        var points = 0
+        for game in gamesPlayed(forTeam: team) {
+            points += scorer.points(forTeam: team, inGame: game)
+        }
+        return points
+    }
+    
+    func gamesPlayed(forPlayer player: Player) -> [Game] {
         var gamesForPlayer: [Game] = []
         for game in gamesPlayed {
             if game.players().contains(player) {
@@ -48,14 +64,14 @@ class Tournament: NSObject, NSCoding {
         return gamesForPlayer
     }
     
-    func remainingGames(forPlayer player:Player) -> [Game] {
-        var remainingGames: [Game] = []
-        for game in allPossibleGames() {
-            if !game.players().contains(player) {
-                remainingGames.append(game)
+    func gamesPlayed(forTeam team: Team) -> [Game] {
+        var gamesForTeam: [Game] = []
+        for game in gamesPlayed {
+            if game.teams().contains(team) {
+                gamesForTeam.append(game)
             }
         }
-        return remainingGames
+        return gamesForTeam
     }
     
     func allPossibleTeams() -> [Team] {
@@ -102,6 +118,7 @@ class Tournament: NSObject, NSCoding {
         aCoder.encode(players, forKey: playersCodingKey)
         aCoder.encode(teams, forKey: teamsCodingKey)
         aCoder.encode(gamesPlayed, forKey: gamesPlayedCodingKey)
+        aCoder.encode(gamesToPlay, forKey: gamesToPlayCodingKey)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -111,6 +128,7 @@ class Tournament: NSObject, NSCoding {
         players = aDecoder.decodeObject(forKey: playersCodingKey) as! [Player]
         teams = aDecoder.decodeObject(forKey: teamsCodingKey) as! [Team]
         gamesPlayed = aDecoder.decodeObject(forKey: gamesPlayedCodingKey) as! [Game]
+        gamesToPlay = aDecoder.decodeObject(forKey: gamesToPlayCodingKey) as! [Game]
     }
     
 }

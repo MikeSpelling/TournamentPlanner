@@ -13,6 +13,20 @@ class LeaderboardViewController: BaseTournamentViewController {
         
         setNavigationBarTitleForTournament()
         setNavigationBarTournamentsButton()
+        
+        print("Played:")
+        for game in tournament.gamesPlayed {
+            print(game)
+        }
+        print("\nTo play:")
+        for game in tournament.gamesToPlay {
+            print(game)
+        }
+        print("\nPoints:")
+        for player in tournament.players {
+            let points = tournament.points(forPlayer: player)
+            print("\(player): \(points)")
+        }
     }
     
 }

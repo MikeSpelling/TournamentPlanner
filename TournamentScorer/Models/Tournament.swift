@@ -38,6 +38,23 @@ class Tournament: NSObject, NSCoding {
         self.title = title
     }
     
+    func leaderboard() -> [Score] {
+        var scores = [Score]()
+        for player in players {
+            var points = 0
+            for game in gamesPlayed(forPlayer: player) {
+                points += scorer.points(forPlayer: player, inGame: game)
+            }
+            scores.append(Score(withTeam: Team(withPlayers: [player]), value: points))
+        }
+        return scores.sorted(by: { (score1, score2) -> Bool in
+            if score1.value == score2.value {
+                return score1.description.compare(score2.description) == ComparisonResult.orderedAscending
+            }
+            return score1.value > score2.value
+        })
+    }
+    
     func points(forPlayer player: Player) -> Int {
         var points = 0
         for game in gamesPlayed(forPlayer: player) {

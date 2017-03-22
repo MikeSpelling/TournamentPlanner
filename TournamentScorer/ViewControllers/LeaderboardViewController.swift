@@ -23,9 +23,8 @@ class LeaderboardViewController: BaseTournamentViewController {
             print(game)
         }
         print("\nPoints:")
-        for player in tournament.players {
-            let points = tournament.points(forPlayer: player)
-            print("\(player): \(points)")
+        for score in tournament.leaderboard() {
+            print("\(score.team): \(score.value)")
         }
     }
     

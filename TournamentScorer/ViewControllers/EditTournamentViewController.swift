@@ -15,6 +15,8 @@ class EditTournamentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserDefaults.save(tournament: Tournament(withTitle: "\(Date())"))
+        
         tableView?.registerCell(ofType: PlayerSummaryCell.self)
     }
 }

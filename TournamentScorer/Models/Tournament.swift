@@ -8,42 +8,34 @@
 
 import Foundation
 
-class Tournament {
+class Tournament: NSObject, NSCoding {
     
-    public var title: String = ""
+    let identifier: String
+    private let identifierCodingKey = "TournamentIdentifier"
     
-    public var scorer: TournamentScorer = TournamentScorer(winValueUsesPointDifference: true)
+    var title: String = ""
+    private let titleCodingKey = "TournamentTitle"
     
-    public var players: [Player] = []
+    var scorer: TournamentScorer = TournamentScorer(winValueUsesPointDifference: true)
+    private let scorerCodingKey = "TournamentScorer"
     
-    public var teams: [Team] = []
+    var players: [Player] = []
+    private let playersCodingKey = "TournamentPlayers"
+    
+    var teams: [Team] = []
+    private let teamsCodingKey = "TournamentTeams"
     
     var gamesPlayed: [Game] = []
+    private let gamesPlayedCodingKey = "TournamentGamesPlayed"
+    
+    var gamesToPlay: [Game] = []
+    private let gamesToPlayCodingKey = "TournamentGamesToPlay"
     
     
     init(withTitle title: String) {
+        identifier = UUID().uuidString
+        
         self.title = title
-        
-        players = [Player(withName: "Mike"),
-                   Player(withName: "Sam"),
-                   Player(withName: "Haroon"),
-                   Player(withName: "James"),
-                   Player(withName: "Antony")]
-        
-        teams = allPossibleTeams()
-        
-        let testGame1 = Game(withScores: [Score(withTeam: teams.first!, value: 2),
-                                          Score(withTeam: teams.last!, value: 4)])
-        
-        let testGame2 = Game(withScores: [Score(withTeam: teams[2], value: 15),
-                                          Score(withTeam: teams[4], value: 11)])
-        gamesPlayed = [testGame1, testGame2]
-        
-        print("teams: \(teams)")
-        print("\(allPossibleGames().count) games:")
-        for game in allPossibleGames() {
-            print(game)
-        }
     }
     
     func games(forPlayer player:Player) -> [Game] {
@@ -90,6 +82,35 @@ class Tournament {
             }
         }
         return possibleGames
+    }
+    
+    // MARK: - NSObject
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let other = object as? Tournament {
+            return self.identifier == other.identifier
+        }
+        return false
+    }
+    
+    // MARK: - NSCoding
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(identifier, forKey: identifierCodingKey)
+        aCoder.encode(title, forKey: titleCodingKey)
+        aCoder.encode(scorer, forKey: scorerCodingKey)
+        aCoder.encode(players, forKey: playersCodingKey)
+        aCoder.encode(teams, forKey: teamsCodingKey)
+        aCoder.encode(gamesPlayed, forKey: gamesPlayedCodingKey)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        identifier = aDecoder.decodeObject(forKey: identifierCodingKey) as! String
+        title = aDecoder.decodeObject(forKey: titleCodingKey) as! String
+        scorer = aDecoder.decodeObject(forKey: scorerCodingKey) as! TournamentScorer
+        players = aDecoder.decodeObject(forKey: playersCodingKey) as! [Player]
+        teams = aDecoder.decodeObject(forKey: teamsCodingKey) as! [Team]
+        gamesPlayed = aDecoder.decodeObject(forKey: gamesPlayedCodingKey) as! [Game]
     }
     
 }

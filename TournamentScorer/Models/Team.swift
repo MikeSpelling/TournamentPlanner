@@ -8,11 +8,16 @@
 
 import Foundation
 
-class Team: Equatable, CustomStringConvertible {
+class Team: NSObject, NSCoding {
+    
+    let identifier: String
+    private let identifierCodingKey = "TeamIdentifier"
     
     let players: [Player]
+    private let playersCodingKey = "TeamPlayers"
     
     init(withPlayers players:[Player]) {
+        self.identifier = UUID().uuidString
         self.players = players
     }
     
@@ -25,15 +30,28 @@ class Team: Equatable, CustomStringConvertible {
         return true
     }
     
-    // MARK: - Equatable
+    // MARK: - NSCoding
     
-    public static func ==(lhs: Team, rhs: Team) -> Bool {
-        return lhs.players == rhs.players
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(identifier, forKey: identifierCodingKey)
+        aCoder.encode(players, forKey: playersCodingKey)
     }
     
-    // MARK: - CustomStringConvertible
+    public required init?(coder aDecoder: NSCoder) {
+        identifier = aDecoder.decodeObject(forKey: identifierCodingKey) as! String
+        players = aDecoder.decodeObject(forKey: playersCodingKey) as! [Player]
+    }
     
-    public var description:String {
+    // MARK: - NSObject
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let other = object as? Team {
+            return players == other.players
+        }
+        return false
+    }
+    
+    override public var description:String {
         var string = ""
         for player in players {
             string += player.name

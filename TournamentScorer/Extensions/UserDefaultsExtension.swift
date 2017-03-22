@@ -10,17 +10,51 @@ import Foundation
 
 extension UserDefaults {
     
+    static private let tournamentsKey = "UserDefaultsTournaments"
+    
     static var tournaments: [Tournament] {
-        if let savedTournamentsData = UserDefaults.standard.object(forKey: "tournaments") as? Data {
-            if let savedTournaments = NSKeyedUnarchiver.unarchiveObject(with: savedTournamentsData) as? [Tournament] {
-                return savedTournaments
+        get {
+            if let savedTournamentsData = UserDefaults.standard.object(forKey: tournamentsKey) as? Data {
+                if let savedTournaments = NSKeyedUnarchiver.unarchiveObject(with: savedTournamentsData) as? [Tournament] {
+                    return savedTournaments
+                }
             }
+            return []
         }
-        return [Tournament(withTitle: "Test Tournament 1")]
+        
+        set {
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: newValue), forKey: tournamentsKey)
+            UserDefaults.standard.synchronize()
+        }
     }
     
-    static func save(tournament: Tournament) {
-        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: tournament), forKey: "tournaments")
-        UserDefaults.standard.synchronize()
+    static func save(tournament tournamentOrNil: Tournament?) {
+        if let tournament = tournamentOrNil {
+            var currentTournaments = UserDefaults.tournaments
+            let index = currentTournaments.index(of: tournament)
+            
+            if (index == nil) {
+                currentTournaments.append(tournament)
+            } else {
+                currentTournaments[index!] = tournament
+            }
+            
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: currentTournaments), forKey: tournamentsKey)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    static func delete(tournament tournamentOrNil: Tournament?) {
+        if let tournament = tournamentOrNil {
+            var currentTournaments = UserDefaults.tournaments
+            let index = currentTournaments.index(of: tournament)
+            
+            if (index != nil) {
+                currentTournaments.remove(at: index!)
+            }
+            
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: currentTournaments), forKey: tournamentsKey)
+            UserDefaults.standard.synchronize()
+        }
     }
 }

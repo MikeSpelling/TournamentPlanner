@@ -8,9 +8,10 @@
 
 import Foundation
 
-class Game: CustomStringConvertible {
+class Game: NSObject, NSCoding {
     
     let scores: [Score]
+    private let scoresCodingKey = "GameScores"
     
     // MARK: - Initialization
     
@@ -74,9 +75,27 @@ class Game: CustomStringConvertible {
         return teams
     }
     
-    // MARK: - CustomStringConvertible
+    // MARK: - Private
     
-    public var description:String {
+    private func sortedScores() -> [Score] {
+        return scores.sorted { (score1: Score, score2: Score) -> Bool in
+            return score1.value > score2.value
+        }
+    }
+    
+    // MARK: - NSCoding
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(scores, forKey: scoresCodingKey)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        scores = aDecoder.decodeObject(forKey: scoresCodingKey) as! [Score]
+    }
+    
+    // MARK: - NSObject
+    
+    override public var description:String {
         var string = ""
         for score in scores {
             string += "\(score)"
@@ -85,14 +104,6 @@ class Game: CustomStringConvertible {
             }
         }
         return string
-    }
-    
-    // MARK: - Private
-    
-    private func sortedScores() -> [Score] {
-        return scores.sorted { (score1: Score, score2: Score) -> Bool in
-            return score1.value > score2.value
-        }
     }
     
 }

@@ -8,9 +8,11 @@
 
 import Foundation
 
-class Score: Equatable, CustomStringConvertible {
+class Score: NSObject, NSCoding {
     let team: Team
+    private let teamCodingKey = "ScoreTeam"
     let value: Int
+    private let valueCodingKey = "ScoreValue"
     
     init(withTeam team: Team, value: Int) {
         self.team = team
@@ -24,15 +26,30 @@ class Score: Equatable, CustomStringConvertible {
         return 0
     }
     
-    // MARK: - Equatable
+    // MARK: - NSCoding
     
-    public static func ==(lhs: Score, rhs: Score) -> Bool {
-        return lhs.team == rhs.team && lhs.value == rhs.value
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(team, forKey: teamCodingKey)
+        aCoder.encode(value, forKey: valueCodingKey)
     }
     
-    // MARK: - CustomStringConvertible
+    public required init?(coder aDecoder: NSCoder) {
+        team = aDecoder.decodeObject(forKey: teamCodingKey) as! Team
+        value = aDecoder.decodeInteger(forKey: valueCodingKey)
+    }
     
-    public var description:String {
+    // MARK: - NSObject
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let other = object as? Score {
+            return
+                team   == other.team   &&
+                value  == other.value
+        }
+        return false
+    }
+    
+    override public var description:String {
         return "\(team):\(value)"
     }
 }

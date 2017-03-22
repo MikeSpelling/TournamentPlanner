@@ -8,14 +8,19 @@
 
 import Foundation
 
-class TournamentScorer {
+class TournamentScorer: NSObject, NSCoding {
     
     let winValue: Int
+    private let winValueCodingKey = "TournamentScorerWinValue"
     let loseValue: Int
+    private let loseValueCodingKey = "TournamentScorerLoseValue"
     let drawValue: Int
+    private let drawValueCodingKey = "TournamentScorerDrawValue"
     
     let winValueUsesPointDifference: Bool
+    private let winValueUsesPointDifferenceCodingKey = "TournamentScorerWinValueUsesPointDifference"
     let loseValueUsesPointDifference: Bool
+    private let loseValueUsesPointDifferenceCodingKey = "TournamentScorerLoseValueUsesPointDifference"
     
     init(winValue: Int = 1, loseValue: Int = 0, drawValue: Int = 0, winValueUsesPointDifference: Bool = false, loseValueUsesPointDifference: Bool = false) {
         self.winValue = winValue
@@ -56,6 +61,26 @@ class TournamentScorer {
         else {
             return drawValue
         }
+    }
+    
+    // MARK: - NSCoding
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(winValue, forKey: winValueCodingKey)
+        aCoder.encode(loseValue, forKey: loseValueCodingKey)
+        aCoder.encode(drawValue, forKey: drawValueCodingKey)
+        
+        aCoder.encode(winValueUsesPointDifference, forKey: winValueUsesPointDifferenceCodingKey)
+        aCoder.encode(loseValueUsesPointDifference, forKey: loseValueUsesPointDifferenceCodingKey)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        winValue = aDecoder.decodeInteger(forKey: winValueCodingKey)
+        loseValue = aDecoder.decodeInteger(forKey: loseValueCodingKey)
+        drawValue = aDecoder.decodeInteger(forKey: drawValueCodingKey)
+        
+        winValueUsesPointDifference = aDecoder.decodeBool(forKey: winValueUsesPointDifferenceCodingKey)
+        loseValueUsesPointDifference = aDecoder.decodeBool(forKey: loseValueUsesPointDifferenceCodingKey)
     }
     
 }

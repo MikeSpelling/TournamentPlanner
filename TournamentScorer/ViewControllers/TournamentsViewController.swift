@@ -13,7 +13,7 @@ class TournamentsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView?
     var addFooter: AddFooterView?
     
-    fileprivate let tournaments: [Tournament] = UserDefaults.tournaments
+    fileprivate var tournaments: [Tournament] = UserDefaults.tournaments
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,15 @@ class TournamentsViewController: UIViewController {
         addFooter?.delegate = self
         
         tableView?.registerCell(ofType: TournamentCell.self)
+        
+        UserDefaults.tournaments = []
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tournaments = UserDefaults.tournaments
+        tableView?.reloadData()
     }
     
 }

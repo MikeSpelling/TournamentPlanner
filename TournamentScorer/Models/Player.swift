@@ -8,23 +8,41 @@
 
 import Foundation
 
-class Player: Equatable, CustomStringConvertible {
+class Player: NSObject, NSCoding {
+    
+    let identifier: String
+    private let identifierCodingKey = "PlayerIdentifier"
     
     let name: String
+    private let nameCodingKey = "PlayerName"
     
     init(withName name: String) {
+        self.identifier = UUID().uuidString
         self.name = name
     }
     
-    // MARK: - Equatable
+    // MARK: - NSCoding
     
-    public static func ==(lhs: Player, rhs: Player) -> Bool {
-        return lhs.name == rhs.name
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(identifier, forKey: identifierCodingKey)
+        aCoder.encode(name, forKey: nameCodingKey)
     }
     
-    // MARK: - CustomStringConvertible
+    public required init?(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: nameCodingKey) as! String
+        identifier = aDecoder.decodeObject(forKey: identifierCodingKey) as! String
+    }
     
-    public var description:String {
+    // MARK: - NSObject
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let other = object as? Player {
+            return identifier == other.identifier
+        }
+        return false
+    }
+    
+    override public var description:String {
         return name
     }
     

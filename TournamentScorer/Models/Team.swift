@@ -21,13 +21,16 @@ class Team: NSObject, NSCoding {
         self.players = players
     }
     
-    func canPlay(againstTeam team: Team) -> Bool {
-        for player in players {
-            if team.players.contains(player) {
-                return false
+    func canPlay(_ team: Team?) -> Bool {
+        if team != nil {
+            for player in players {
+                if team!.players.contains(player) {
+                    return false
+                }
             }
+            return true
         }
-        return true
+        return false
     }
     
     // MARK: - NSCoding

@@ -108,7 +108,7 @@ class Tournament: NSObject, NSCoding {
         for (index, team) in teams.enumerated() {
             if index < teams.count-1 {
                 for otherIndex in index+1...teams.count-1 {
-                    if teams[otherIndex].canPlay(againstTeam: team) {
+                    if teams[otherIndex].canPlay(team) {
                         possibleGames.append(Game(withTeams: [team, teams[otherIndex]]))
                     }
                 }

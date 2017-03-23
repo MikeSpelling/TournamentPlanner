@@ -22,7 +22,7 @@ class EditTournamentViewController: UIViewController {
     
     func createTestTournament() {
         let tournament = Tournament(withTitle: "Test \(Date().timeIntervalSince1970)")
-        tournament.players = [Player(withName: "Mike"), Player(withName: "Jony"), Player(withName: "Sam"), Player(withName: "James"), Player(withName: "Haroon")]
+        tournament.players = [Player(withName: "Mike"), Player(withName: "Jony"), Player(withName: "Sam"), Player(withName: "James")]
         tournament.teams = tournament.allPossibleTeams()
         
         var gamesToPlay = [Game]()

@@ -30,37 +30,39 @@ class TournamentScorer: NSObject, NSCoding {
         self.loseValueUsesPointDifference = loseValueUsesPointDifference
     }
     
-    func points(forPlayer player: Player, inGame game: Game) -> Int {
-        return points(forTeam: game.team(forPlayer: player), inGame: game)
+    func points(forPlayer player: Player?, inGame game: Game?) -> Int {
+        return points(forTeam: game?.team(forPlayer: player), inGame: game)
     }
     
-    func points(forTeam team: Team?, inGame game: Game) -> Int {
-        if (team == nil) {
+    func points(forTeam team: Team?, inGame game: Game?) -> Int {
+        if (team == nil || game == nil) {
             return 0
         }
         
-        let winningTeam = game.winningTeam()
-        let losingTeams = game.losingTeams()
+        let winningScores = game!.winningScores()
+        let losingScores = game!.losingScores()
         
-        if team == winningTeam {
-            if winValueUsesPointDifference {
-                return game.score(forTeam: team!)!.value - game.score(forTeam: losingTeams[0])!.value
+        if winningScores.count>0 && losingScores.count>0 {
+            let didTeamWin = winningScores.map({ (score: Score) -> Team in
+                return score.team
+            }).contains(team!)
+            
+            if didTeamWin {
+                if winValueUsesPointDifference {
+                    return winningScores.first!.value - losingScores.first!.value
+                } else {
+                    return winValue
+                }
             }
             else {
-                return winValue
+                if loseValueUsesPointDifference {
+                    return game!.score(forTeam: team)!.value - winningScores.first!.value
+                } else {
+                    return loseValue
+                }
             }
         }
-        else if losingTeams.contains(team!) {
-            if loseValueUsesPointDifference {
-                return game.score(forTeam: team!)!.value - game.score(forTeam: winningTeam!)!.value
-            }
-            else {
-                return loseValue
-            }
-        }
-        else {
-            return drawValue
-        }
+        return drawValue
     }
     
     // MARK: - NSCoding

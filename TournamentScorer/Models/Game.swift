@@ -29,16 +29,22 @@ class Game: NSObject, NSCoding {
     
     // MARK: - Helpers
     
-    func team(forPlayer player: Player) -> Team? {
-        return scores.first { (score: Score) -> Bool in
-            return score.team.players.contains(player)
-        }?.team
+    func team(forPlayer player: Player?) -> Team? {
+        if player != nil {
+            return scores.first { (score: Score) -> Bool in
+                return score.team.players.contains(player!)
+            }?.team
+        }
+        return nil
     }
     
-    func score(forTeam team: Team) -> Score? {
-        return scores.first { (score: Score) -> Bool in
-            return score.team == team
+    func score(forTeam team: Team?) -> Score? {
+        if team != nil {
+            return scores.first { (score: Score) -> Bool in
+                return score.team == team!
+            }
         }
+        return nil
     }
     
     func teams() -> [Team] {
@@ -53,26 +59,24 @@ class Game: NSObject, NSCoding {
             }.joined())
     }
     
-    func winningTeam() -> Team? {
+    func winningScores() -> [Score] {
+        var winningScores = [Score]()
         let sortedScores = self.sortedScores()
-        var winningScore: Score? = sortedScores.first
-        if sortedScores.count>1 {
-            if sortedScores[0].value == sortedScores[1].value {
-                winningScore = nil // draw
+        for score in sortedScores {
+            if winningScores.count == 0 {
+                winningScores.append(score)
+            }
+            else if score.value == winningScores.first!.value {
+                winningScores.append(score)
             }
         }
-        return winningScore?.team
+        return winningScores.count == sortedScores.count ? [Score]() : winningScores
     }
     
-    func losingTeams() -> [Team] {
-        var teams: [Team] = []
-        let winningTeam = self.winningTeam()
-        
-        if winningTeam != nil {
-            teams = self.teams()
-            teams.remove(at: 0)
-        }
-        return teams
+    func losingScores() -> [Score] {
+        var losingScores = sortedScores()
+        losingScores.removeFirst(winningScores().count)
+        return scores.count == losingScores.count ? [Score]() : losingScores
     }
     
     // MARK: - Private

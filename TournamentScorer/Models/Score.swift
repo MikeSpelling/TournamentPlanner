@@ -19,9 +19,16 @@ class Score: NSObject, NSCoding {
         self.value = value
     }
     
-    func value(forPlayer player: Player) -> Int {
-        if team.players.contains(player) {
-            return value
+    init(withPlayer player: Player, value: Int) {
+        self.team = Team(withPlayers: [player])
+        self.value = value
+    }
+    
+    func value(forPlayer player: Player?) -> Int {
+        if player != nil {
+            if team.players.contains(player!) {
+                return value
+            }
         }
         return 0
     }

@@ -14,23 +14,23 @@ class Score: NSObject, NSCoding {
     let value: Int
     private let valueCodingKey = "ScoreValue"
     
-    init(withTeam team: Team, value: Int) {
+    init(withTeam team: Team, value: Int = 0) {
         self.team = team
         self.value = value
     }
     
-    init(withPlayer player: Player, value: Int) {
+    init(withPlayer player: Player, value: Int = 0) {
         self.team = Team(withPlayers: [player])
         self.value = value
     }
     
-    func value(forPlayer player: Player?) -> Int {
-        if player != nil {
-            if team.players.contains(player!) {
-                return value
+    static func sort(_ scores: [Score]) -> [Score] {
+        return scores.sorted(by: { (score1, score2) -> Bool in
+            if score1.value == score2.value {
+                return score1.description.compare(score2.description) == ComparisonResult.orderedAscending
             }
-        }
-        return 0
+            return score1.value > score2.value
+        })
     }
     
     // MARK: - NSCoding

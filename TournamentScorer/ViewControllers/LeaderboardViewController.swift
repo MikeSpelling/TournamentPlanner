@@ -14,7 +14,7 @@ class LeaderboardViewController: BaseTournamentViewController {
         setNavigationBarTitleForTournament()
         setNavigationBarTournamentsButton()
         
-        print("Played:")
+        print("- \(tournament.title)\nPlayed:")
         for game in tournament.gamesPlayed {
             print(game)
         }
@@ -22,10 +22,15 @@ class LeaderboardViewController: BaseTournamentViewController {
         for game in tournament.gamesToPlay {
             print(game)
         }
-        print("\nPoints:")
-        for score in tournament.leaderboard() {
+        print("\nPlayer Points:")
+        for score in tournament.playerLeaderboard() {
             print("\(score.team): \(score.value)")
         }
+        print("\nTeam Points:")
+        for score in tournament.teamLeaderboard() {
+            print("\(score.team): \(score.value)")
+        }
+        print("")
     }
     
 }

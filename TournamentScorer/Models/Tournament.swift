@@ -38,54 +38,43 @@ class Tournament: NSObject, NSCoding {
         self.title = title
     }
     
-    func leaderboard() -> [Score] {
+    func playerLeaderboard() -> [Score] {
         var scores = [Score]()
         for player in players {
-            var points = 0
-            for game in gamesPlayed(forPlayer: player) {
-                points += scorer.points(forPlayer: player, inGame: game)
-            }
-            scores.append(Score(withTeam: Team(withPlayers: [player]), value: points))
+            scores.append(scorer.score(forPlayer:   player,
+                                       inGames:     gamesPlayed(forPlayer: player)))
         }
-        return scores.sorted(by: { (score1, score2) -> Bool in
-            if score1.value == score2.value {
-                return score1.description.compare(score2.description) == ComparisonResult.orderedAscending
-            }
-            return score1.value > score2.value
-        })
+        return Score.sort(scores)
     }
     
-    func points(forPlayer player: Player) -> Int {
-        var points = 0
-        for game in gamesPlayed(forPlayer: player) {
-            points += scorer.points(forPlayer: player, inGame: game)
+    func teamLeaderboard() -> [Score] {
+        var scores = [Score]()
+        for team in teams {
+            scores.append(scorer.score(forTeam: team,
+                                       inGames: gamesPlayed(forTeam: team)))
         }
-        return points
+        return Score.sort(scores)
     }
     
-    func points(forTeam team: Team) -> Int {
-        var points = 0
-        for game in gamesPlayed(forTeam: team) {
-            points += scorer.points(forTeam: team, inGame: game)
-        }
-        return points
-    }
-    
-    func gamesPlayed(forPlayer player: Player) -> [Game] {
+    func gamesPlayed(forPlayer player: Player?) -> [Game] {
         var gamesForPlayer: [Game] = []
-        for game in gamesPlayed {
-            if game.players().contains(player) {
-                gamesForPlayer.append(game)
+        if player != nil {
+            for game in gamesPlayed {
+                if game.players().contains(player!) {
+                    gamesForPlayer.append(game)
+                }
             }
         }
         return gamesForPlayer
     }
     
-    func gamesPlayed(forTeam team: Team) -> [Game] {
+    func gamesPlayed(forTeam team: Team?) -> [Game] {
         var gamesForTeam: [Game] = []
-        for game in gamesPlayed {
-            if game.teams().contains(team) {
-                gamesForTeam.append(game)
+        if team != nil {
+            for game in gamesPlayed {
+                if game.teams().contains(team!) {
+                    gamesForTeam.append(game)
+                }
             }
         }
         return gamesForTeam

@@ -22,7 +22,7 @@ class Game: NSObject, NSCoding {
     init(withTeams teams: [Team]) {
         var scores : [Score] = []
         for team in teams {
-            scores.append(Score(withTeam: team, value: 0))
+            scores.append(Score(withTeam: team))
         }
         self.scores = scores
     }
@@ -48,7 +48,7 @@ class Game: NSObject, NSCoding {
     }
     
     func teams() -> [Team] {
-        return sortedScores().map { (score: Score) -> Team in
+        return Score.sort(scores).map { (score: Score) -> Team in
             return score.team
         }
     }
@@ -61,7 +61,7 @@ class Game: NSObject, NSCoding {
     
     func winningScores() -> [Score] {
         var winningScores = [Score]()
-        let sortedScores = self.sortedScores()
+        let sortedScores = Score.sort(scores)
         for score in sortedScores {
             if winningScores.count == 0 {
                 winningScores.append(score)
@@ -74,17 +74,9 @@ class Game: NSObject, NSCoding {
     }
     
     func losingScores() -> [Score] {
-        var losingScores = sortedScores()
+        var losingScores = Score.sort(scores)
         losingScores.removeFirst(winningScores().count)
         return scores.count == losingScores.count ? [Score]() : losingScores
-    }
-    
-    // MARK: - Private
-    
-    private func sortedScores() -> [Score] {
-        return scores.sorted { (score1: Score, score2: Score) -> Bool in
-            return score1.value > score2.value
-        }
     }
     
     // MARK: - NSCoding

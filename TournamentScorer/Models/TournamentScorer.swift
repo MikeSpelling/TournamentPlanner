@@ -30,9 +30,34 @@ class TournamentScorer: NSObject, NSCoding {
         self.loseValueUsesPointDifference = loseValueUsesPointDifference
     }
     
-    func points(forPlayer player: Player?, inGame game: Game?) -> Int {
-        return points(forTeam: game?.team(forPlayer: player), inGame: game)
+    // Mark: - Player Scoring
+    
+    func points(forPlayer player: Player?, inGames games: [Game]) -> Int {
+        var totalPoints = 0
+        for game in games {
+            totalPoints += points(forTeam: game.team(forPlayer: player), inGame: game)
+        }
+        return totalPoints
     }
+    
+    func points(forPlayer player: Player?, inGame game: Game?) -> Int {
+        if game != nil {
+            return points(forPlayer: player, inGames: [game!])
+        }
+        return 0
+    }
+    
+    func score(forPlayer player: Player, inGame game: Game?) -> Score {
+        return Score(withPlayer:    player,
+                     value:         points(forPlayer: player, inGame: game))
+    }
+    
+    func score(forPlayer player: Player, inGames games: [Game]) -> Score {
+        return Score(withPlayer:    player,
+                     value:         points(forPlayer: player, inGames: games))
+    }
+    
+    // Mark - Team Scoring
     
     func points(forTeam team: Team?, inGame game: Game?) -> Int {
         if (team == nil || game == nil) {
@@ -63,6 +88,24 @@ class TournamentScorer: NSObject, NSCoding {
             }
         }
         return drawValue
+    }
+    
+    func points(forTeam team: Team?, inGames games: [Game]) -> Int {
+        var totalPoints = 0
+        for game in games {
+            totalPoints += points(forTeam: team, inGame: game)
+        }
+        return totalPoints
+    }
+    
+    func score(forTeam team: Team, inGame game: Game?) -> Score {
+        return Score(withTeam:  team,
+                     value:     points(forTeam: team, inGame: game))
+    }
+    
+    func score(forTeam team: Team, inGames games: [Game]) -> Score {
+        return Score(withTeam: team,
+                     value:     points(forTeam: team, inGames: games))
     }
     
     // MARK: - NSCoding

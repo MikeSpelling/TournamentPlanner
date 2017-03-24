@@ -10,7 +10,7 @@ import Foundation
 
 class Game: NSObject, NSCoding {
     
-    let identifier: String
+    private let identifier: String
     private let identifierCodingKey = "GameIdentifier"
     
     var scores: [Score]

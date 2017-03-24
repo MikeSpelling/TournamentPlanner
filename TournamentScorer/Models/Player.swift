@@ -10,7 +10,7 @@ import Foundation
 
 class Player: NSObject, NSCoding {
     
-    let identifier: String
+    private let identifier: String
     private let identifierCodingKey = "PlayerIdentifier"
     
     let name: String

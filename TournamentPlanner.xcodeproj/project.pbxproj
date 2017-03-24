@@ -49,7 +49,7 @@
 		2AAF54BC1E816C6C00BD4105 /* EditTournamentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTournamentViewController.xib; sourceTree = "<group>"; };
 		2AAF54BE1E816D3D00BD4105 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		2AAF54C01E816DA400BD4105 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
-		9F98532D1E7D3EC00089AAE6 /* TournamentScorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournamentScorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F98532D1E7D3EC00089AAE6 /* TournamentPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TournamentPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9853531E7D4AE40089AAE6 /* TournamentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentsViewController.swift; sourceTree = "<group>"; };
 		9F9853561E7D4B120089AAE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F9853571E7D4B120089AAE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		9F9853241E7D3EC00089AAE6 = {
 			isa = PBXGroup;
 			children = (
-				9F98532F1E7D3EC00089AAE6 /* TournamentScorer */,
+				9F98532F1E7D3EC00089AAE6 /* TournamentPlanner */,
 				9F98532E1E7D3EC00089AAE6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,12 +103,12 @@
 		9F98532E1E7D3EC00089AAE6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F98532D1E7D3EC00089AAE6 /* TournamentScorer.app */,
+				9F98532D1E7D3EC00089AAE6 /* TournamentPlanner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9F98532F1E7D3EC00089AAE6 /* TournamentScorer */ = {
+		9F98532F1E7D3EC00089AAE6 /* TournamentPlanner */ = {
 			isa = PBXGroup;
 			children = (
 				9F9853651E7DF1DB0089AAE6 /* Cells */,
@@ -117,7 +117,7 @@
 				9F9853501E7D4AE40089AAE6 /* Models */,
 				9F9853521E7D4AE40089AAE6 /* ViewControllers */,
 			);
-			path = TournamentScorer;
+			path = TournamentPlanner;
 			sourceTree = "<group>";
 		};
 		9F9853501E7D4AE40089AAE6 /* Models */ = {
@@ -173,9 +173,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9F98532C1E7D3EC00089AAE6 /* TournamentScorer */ = {
+		9F98532C1E7D3EC00089AAE6 /* TournamentPlanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F98534A1E7D3EC00089AAE6 /* Build configuration list for PBXNativeTarget "TournamentScorer" */;
+			buildConfigurationList = 9F98534A1E7D3EC00089AAE6 /* Build configuration list for PBXNativeTarget "TournamentPlanner" */;
 			buildPhases = (
 				9F9853291E7D3EC00089AAE6 /* Sources */,
 				9F98532A1E7D3EC00089AAE6 /* Frameworks */,
@@ -185,9 +185,9 @@
 			);
 			dependencies = (
 			);
-			name = TournamentScorer;
+			name = TournamentPlanner;
 			productName = DoublesScorer;
-			productReference = 9F98532D1E7D3EC00089AAE6 /* TournamentScorer.app */;
+			productReference = 9F98532D1E7D3EC00089AAE6 /* TournamentPlanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -207,7 +207,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9F9853281E7D3EC00089AAE6 /* Build configuration list for PBXProject "TournamentScorer" */;
+			buildConfigurationList = 9F9853281E7D3EC00089AAE6 /* Build configuration list for PBXProject "TournamentPlanner" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -220,7 +220,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9F98532C1E7D3EC00089AAE6 /* TournamentScorer */,
+				9F98532C1E7D3EC00089AAE6 /* TournamentPlanner */,
 			);
 		};
 /* End PBXProject section */
@@ -400,9 +400,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XA4GYR69V9;
-				INFOPLIST_FILE = TournamentScorer/Resources/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TournamentPlanner/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mike.TournamentScorer;
+				PRODUCT_BUNDLE_IDENTIFIER = mike.TournamentPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -413,9 +413,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XA4GYR69V9;
-				INFOPLIST_FILE = TournamentScorer/Resources/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TournamentPlanner/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mike.TournamentScorer;
+				PRODUCT_BUNDLE_IDENTIFIER = mike.TournamentPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -424,7 +424,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9F9853281E7D3EC00089AAE6 /* Build configuration list for PBXProject "TournamentScorer" */ = {
+		9F9853281E7D3EC00089AAE6 /* Build configuration list for PBXProject "TournamentPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F9853481E7D3EC00089AAE6 /* Debug */,
@@ -433,7 +433,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9F98534A1E7D3EC00089AAE6 /* Build configuration list for PBXNativeTarget "TournamentScorer" */ = {
+		9F98534A1E7D3EC00089AAE6 /* Build configuration list for PBXNativeTarget "TournamentPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F98534B1E7D3EC00089AAE6 /* Debug */,

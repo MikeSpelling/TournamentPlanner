@@ -16,8 +16,6 @@ class EditTournamentViewController: UIViewController {
         super.viewDidLoad()
         
         createTestTournament()
-        
-        tableView?.registerCell(ofType: PlayerSummaryCell.self)
     }
     
     func createTestTournament() {
@@ -55,7 +53,7 @@ extension EditTournamentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(ofType: PlayerSummaryCell.self) as! TournamentCell
+        let cell = tableView.dequeueCell(ofType: TournamentCell.self) as! TournamentCell
         return cell
     }
     

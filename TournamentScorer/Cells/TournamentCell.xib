@@ -15,17 +15,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZDe-8J-qzW" id="Y8Z-fr-tTj">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIH-sb-mEc">
-                        <rect key="frame" x="166" y="11" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIH-sb-mEc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="DIH-sb-mEc" firstAttribute="leading" secondItem="Y8Z-fr-tTj" secondAttribute="leading" id="DlU-oQ-xSW"/>
+                    <constraint firstItem="DIH-sb-mEc" firstAttribute="top" secondItem="Y8Z-fr-tTj" secondAttribute="top" id="YZl-8X-kqb"/>
+                    <constraint firstAttribute="bottom" secondItem="DIH-sb-mEc" secondAttribute="bottom" id="hsy-Ze-vFR"/>
+                    <constraint firstAttribute="trailing" secondItem="DIH-sb-mEc" secondAttribute="trailing" id="wan-qb-K7R"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="titleLabel" destination="DIH-sb-mEc" id="Aqh-OE-bWU"/>

@@ -10,13 +10,13 @@ import Foundation
 
 class Tournament: NSObject, NSCoding {
     
-    let identifier: String
+    private let identifier: String
     private let identifierCodingKey = "TournamentIdentifier"
     
     var title: String = ""
     private let titleCodingKey = "TournamentTitle"
     
-    var scorer: TournamentScorer = TournamentScorer(winValueUsesPointDifference: true)
+    private var scorer: TournamentScorer = TournamentScorer(winValueUsesPointDifference: true)
     private let scorerCodingKey = "TournamentScorer"
     
     var players: [Player] = []
@@ -56,28 +56,47 @@ class Tournament: NSObject, NSCoding {
         return Score.sort(scores)
     }
     
-    func gamesPlayed(forPlayer player: Player?) -> [Game] {
-        var gamesForPlayer: [Game] = []
-        if player != nil {
-            for game in gamesPlayed {
-                if game.players().contains(player!) {
-                    gamesForPlayer.append(game)
-                }
+    func add(gameToPlay game: Game?) {
+        if game != nil {
+            if !gamesToPlay.contains(game!) {
+                gamesToPlay.append(game!)
             }
         }
-        return gamesForPlayer
+    }
+    
+    func add(playedGame game: Game?) {
+        if game != nil {
+            if !gamesPlayed.contains(game!) {
+                gamesPlayed.append(game!)
+            }
+        }
+    }
+    
+    func play(game: Game?, onDate date: Date = Date()) {
+        if game != nil {
+            let index = gamesToPlay.index(of: game!)
+            if index != nil {
+                gamesToPlay.remove(at: index!)
+            }
+            game!.date = Date()
+            add(playedGame: game)
+        }
+    }
+    
+    func gamesToPlay(forPlayer player: Player?) -> [Game] {
+        return self.games(forPlayer: player, inGames: gamesToPlay)
+    }
+    
+    func gamesToPlay(forTeam team: Team?) -> [Game] {
+        return self.games(forTeam: team, inGames: gamesToPlay)
+    }
+    
+    func gamesPlayed(forPlayer player: Player?) -> [Game] {
+        return self.games(forPlayer: player, inGames: gamesPlayed)
     }
     
     func gamesPlayed(forTeam team: Team?) -> [Game] {
-        var gamesForTeam: [Game] = []
-        if team != nil {
-            for game in gamesPlayed {
-                if game.teams().contains(team!) {
-                    gamesForTeam.append(game)
-                }
-            }
-        }
-        return gamesForTeam
+        return self.games(forTeam: team, inGames: gamesPlayed)
     }
     
     func allPossibleTeams() -> [Team] {
@@ -135,6 +154,32 @@ class Tournament: NSObject, NSCoding {
         teams = aDecoder.decodeObject(forKey: teamsCodingKey) as! [Team]
         gamesPlayed = aDecoder.decodeObject(forKey: gamesPlayedCodingKey) as! [Game]
         gamesToPlay = aDecoder.decodeObject(forKey: gamesToPlayCodingKey) as! [Game]
+    }
+    
+    // MARK: - Private
+    
+    private func games(forPlayer player: Player?, inGames games: [Game]) -> [Game] {
+        var gamesForPlayer = [Game]()
+        if player != nil {
+            for game in games {
+                if game.players().contains(player!) {
+                    gamesForPlayer.append(game)
+                }
+            }
+        }
+        return gamesForPlayer
+    }
+    
+    private func games(forTeam team: Team?, inGames games: [Game]) -> [Game] {
+        var gamesForTeam = [Game]()
+        if team != nil {
+            for game in games {
+                if game.teams().contains(team!) {
+                    gamesForTeam.append(game)
+                }
+            }
+        }
+        return gamesForTeam
     }
     
 }

@@ -10,21 +10,31 @@ import Foundation
 
 class Game: NSObject, NSCoding {
     
+    let identifier: String
+    private let identifierCodingKey = "GameIdentifier"
+    
     var scores: [Score]
     private let scoresCodingKey = "GameScores"
     
+    var date: Date?
+    private let dateCodingKey = "GameDate"
+    
     // MARK: - Initialization
     
-    init(withScores scores: [Score]) {
+    init(withScores scores: [Score], date: Date? = nil) {
+        self.identifier = UUID().uuidString
         self.scores = scores
+        self.date = date
     }
     
-    init(withTeams teams: [Team]) {
+    init(withTeams teams: [Team], date: Date? = nil) {
+        self.identifier = UUID().uuidString
         var scores : [Score] = []
         for team in teams {
             scores.append(Score(withTeam: team))
         }
         self.scores = scores
+        self.date = date
     }
     
     // MARK: - Helpers
@@ -82,14 +92,25 @@ class Game: NSObject, NSCoding {
     // MARK: - NSCoding
     
     public func encode(with aCoder: NSCoder) {
+        aCoder.encode(identifier, forKey: identifierCodingKey)
         aCoder.encode(scores, forKey: scoresCodingKey)
+        aCoder.encode(date, forKey: dateCodingKey)
     }
     
     public required init?(coder aDecoder: NSCoder) {
+        identifier = aDecoder.decodeObject(forKey: identifierCodingKey) as! String
         scores = aDecoder.decodeObject(forKey: scoresCodingKey) as! [Score]
+        date = aDecoder.decodeObject(forKey: dateCodingKey) as? Date
     }
     
     // MARK: - NSObject
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let other = object as? Game {
+            return identifier == other.identifier
+        }
+        return false
+    }
     
     override public var description:String {
         var string = ""

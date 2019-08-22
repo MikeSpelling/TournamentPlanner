@@ -1,3 +1,3 @@
 # TournamentPlanner
 
-Plan and keep track of tournaments!
+Plan and keep track of tournaments! Now!
